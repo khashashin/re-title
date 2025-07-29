@@ -58,12 +58,7 @@ function showStatus(statusEl, message, isError = false) {
 }
 
 async function handleChangeTitle(elements) {
-  const newTitle = elements.newTitleInput.value.trim();
-
-  if (!newTitle) {
-    showStatus(elements.status, "Please enter a title", true);
-    return;
-  }
+  const newTitle = elements.newTitleInput.value;
 
   if (!currentTab) {
     showStatus(elements.status, "No active tab found", true);
@@ -143,8 +138,8 @@ async function saveToRecentTitles(title) {
     recentTitles = recentTitles.filter((t) => t !== title);
     recentTitles.unshift(title);
 
-    if (recentTitles.length > 10) {
-      recentTitles = recentTitles.slice(0, 10);
+    if (recentTitles.length > 15) {
+      recentTitles = recentTitles.slice(0, 15);
     }
 
     await chrome.storage.local.set({ recentTitles: recentTitles });
@@ -163,8 +158,8 @@ async function loadSavedTitles(elements) {
       recentTitles.forEach((title) => {
         const titleEl = document.createElement("div");
         titleEl.className = "saved-title";
-        titleEl.textContent = title;
-        titleEl.title = `Click to use: ${title}`;
+        titleEl.textContent = title || "(Empty title)";
+        titleEl.title = `Click to use: ${title || "(Empty title)"}`;
 
         titleEl.addEventListener("click", () => {
           elements.newTitleInput.value = title;
