@@ -1,75 +1,58 @@
 # Re-Title
 
-_Turn your chaotic tab bar into a clean, icon-only masterpiece_
+_Turn your chaotic tab bar into a clean, organized workspace_
 
-You know that satisfying feeling when you pin tabs and they become just clean little icons? Re-Title lets you have that everywhere. Create Google tab groups, remove all the text, and enjoy a browser that looks like it was designed by someone who actually uses computers.
+## The Chrome Reality Check
 
-No more "Google Docs - Project Final Final FINAL v2" taking up half your tab bar. Just organized groups of clean icons that make sense.
+Chrome extensions **cannot** modify the browser's native tab styling. This means:
 
-## The Real Problem
+- ❌ Can't change tab width or padding
+- ❌ Can't make regular tabs look exactly like pinned tabs
+- ❌ Can't access browser UI CSS
+- ✅ Can change tab titles (which is what this extension does)
 
-Your tab bar is a mess. Not because you're disorganized, but because websites have terrible, verbose titles. "Dashboard - Project Management Tool - Company Name - More Useless Text" when all you need is the icon to know what it is.
+## The Practical Solution
 
-Tab groups help, but they still show those awful titles. You can pin individual tabs to get clean icons, but then you lose the organization. It's like having to choose between tidiness and structure.
+Since we can't change tab styling, here's the most effective workflow:
 
-## The Solution
+### For Your Core Tools (Pin These)
 
-Re-Title works perfectly with Chrome's tab groups to give you the best of both worlds:
+**Pin your most-used tabs** - these become true icon-only tabs:
 
-1. **Create tab groups** for your projects, tools, or workflows
-2. **Remove all the titles** with Re-Title (just leave the field empty)
-3. **Get clean, organized rows of icons** that actually make sense
+- Gmail, Calendar, Slack
+- GitHub, documentation sites
+- Music/media players
 
-Imagine your browser with groups like:
+Right-click → "Pin tab" - these stay minimal and organized.
 
-- A "Work" group with just Gmail, Calendar, and Slack icons
-- A "Dev" group with GitHub, Stack Overflow, and documentation favicons
-- A "Media" group with YouTube, Spotify, and news site icons
+### For Project/Group Work (Use Re-Title)
 
-All perfectly organized. All beautifully minimal. All actually usable.
+**Use Re-Title with tab groups** for project-based browsing:
 
-## Why This Changes Everything
+1. Create tab groups for different projects/contexts
+2. Use Re-Title to set minimal titles (single characters or short names)
+3. Get organized, less-cluttered tab groups
 
-**Before:** A tab bar that looks like someone threw alphabet soup at your screen
+## Best Practices
 
-**After:** Clean, grouped icons that let you find what you need instantly
+### Pinned Tab Strategy:
 
-This isn't just about aesthetics (though it looks amazing). It's about turning your browser into a proper workspace. When tabs are just icons in logical groups, you stop hunting and start working.
+- Pin 3-6 core tools you use daily
+- These become your permanent dock
+- Always visible, always minimal
 
-## How It Works
+### Tab Group Strategy:
 
-The magic happens when you combine Chrome's native tab grouping with Re-Title's empty title feature:
+- Group related project tabs
+- Use Re-Title for minimal titles ("P1", "Docs", "•", etc.)
+- Color-code groups for quick identification
 
-**Step 1:** Group your tabs (right-click tabs → "Add to new group")
-**Step 2:** Open Re-Title on each tab (`Ctrl+Shift+T`)
-**Step 3:** Leave the title field empty and hit "Apply Title"
-**Step 4:** Enjoy your beautiful, minimal browser
+### Title Options for Groups:
 
-The tabs keep their favicons but lose the text clutter. Your groups stay organized but look clean. It's like having a professionally designed workspace instead of a digital junk drawer.
-
-## Pro Tips for Icon-Only Browsing
-
-**Choose your favicons wisely:** Some sites have terrible or identical icons. Bookmark better alternatives or use different Google accounts to get varied Gmail icons.
-
-**Color-code your groups:** Chrome lets you assign colors to tab groups. Use this to separate work/personal, or different projects.
-
-**Keep group sizes reasonable:** 3-6 tabs per group works best. More than that and you lose the clean aesthetic.
-
-**Pin your most-used tabs:** Combine this with regular pinned tabs for tools you use constantly.
-
-## The Technical Side
-
-This extension does one simple thing really well: it removes tab titles completely when you want it to. No complicated features, no bloated interface, just clean functionality.
-
-The empty title feature was specifically designed for this workflow. While other tab managers try to solve organization with more complexity, Re-Title solves it with less—by getting rid of the visual noise entirely.
-
-Works on every website, survives page reloads, and plays perfectly with Chrome's native tab management. It's the missing piece that makes tab groups actually useful.
-
-## Why This Exists
-
-I got tired of my browser looking like a chaotic bedroom floor. Tab groups were close to the solution, but the long titles still made everything cluttered and hard to scan.
-
-After trying every tab manager extension and productivity hack, I realized the answer wasn't more organization tools—it was less visual noise. Sometimes the best feature is the one you remove.
+- Single characters: •, ◯, ▪, →
+- Short codes: P1, Dev, Ref
+- Emoji: 📝, 🔧, 📊
+- Invisible character: ⠀ (still has padding but no visible text)
 
 ## Installation
 
