@@ -45,6 +45,12 @@ function setupEventListeners(elements) {
       handleChangeTitle(elements);
     }
   });
+
+  const iconOnlyBtn = document.getElementById("iconOnlyBtn");
+  if (iconOnlyBtn) {
+    iconOnlyBtn.addEventListener("click", () => handleIconOnly(elements));
+  }
+
   elements.newTitleInput.focus();
 }
 
@@ -57,8 +63,48 @@ function showStatus(statusEl, message, isError = false) {
   }, 3000);
 }
 
+async function handleIconOnly(elements) {
+  const iconOnlyTitle = "⠀";
+
+  if (!currentTab) {
+    showStatus(elements.status, "No active tab found", true);
+    return;
+  }
+
+  const originalBtnText = document.getElementById("iconOnlyBtn").textContent;
+  const iconOnlyBtn = document.getElementById("iconOnlyBtn");
+  iconOnlyBtn.disabled = true;
+  iconOnlyBtn.innerHTML = 'Applying<span class="loading"></span>';
+
+  try {
+    await chrome.tabs.sendMessage(currentTab.id, {
+      action: "changeTitle",
+      newTitle: iconOnlyTitle,
+    });
+
+    await chrome.storage.local.set({
+      [`title_${currentTab.id}`]: iconOnlyTitle,
+      [`original_title_${currentTab.id}`]: originalTitle,
+    });
+
+    elements.currentTitle.textContent = "Icon Only Mode";
+    elements.newTitleInput.value = iconOnlyTitle;
+    showStatus(elements.status, "Icon-only mode activated!");
+    loadSavedTitles(elements);
+  } catch (error) {
+    showStatus(elements.status, "Failed to activate icon-only mode", true);
+  } finally {
+    iconOnlyBtn.disabled = false;
+    iconOnlyBtn.textContent = originalBtnText;
+  }
+}
+
 async function handleChangeTitle(elements) {
-  const newTitle = elements.newTitleInput.value;
+  let newTitle = elements.newTitleInput.value.trim();
+
+  if (newTitle === "") {
+    newTitle = "⠀";
+  }
 
   if (!currentTab) {
     showStatus(elements.status, "No active tab found", true);
@@ -81,7 +127,13 @@ async function handleChangeTitle(elements) {
     });
 
     await saveToRecentTitles(newTitle);
-    elements.currentTitle.textContent = newTitle;
+
+    if (newTitle === "⠀") {
+      elements.currentTitle.textContent = "Icon Only Mode";
+    } else {
+      elements.currentTitle.textContent = newTitle;
+    }
+
     showStatus(elements.status, "Title applied successfully!");
     loadSavedTitles(elements);
   } catch (error) {
@@ -158,8 +210,11 @@ async function loadSavedTitles(elements) {
       recentTitles.forEach((title) => {
         const titleEl = document.createElement("div");
         titleEl.className = "saved-title";
-        titleEl.textContent = title || "(Empty title)";
-        titleEl.title = `Click to use: ${title || "(Empty title)"}`;
+
+        const displayTitle =
+          title === "⠀" ? "Icon Only Mode" : title || "(Empty title)";
+        titleEl.textContent = displayTitle;
+        titleEl.title = `Click to use: ${displayTitle}`;
 
         titleEl.addEventListener("click", () => {
           elements.newTitleInput.value = title;

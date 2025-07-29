@@ -126,6 +126,10 @@
         color: #a0aec0;
       }
 
+      .quick-action {
+        margin-bottom: 16px;
+      }
+
       .button-group {
         display: flex;
         gap: 12px;
@@ -188,6 +192,19 @@
         border-color: #cbd5e0;
         transform: translateY(-1px);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .btn-icon-only {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        color: white;
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        width: 100%;
+        margin-bottom: 12px;
+      }
+
+      .btn-icon-only:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
       }
 
       .btn:disabled {
@@ -335,6 +352,21 @@
           transform: translateY(0);
         }
       }
+
+      .tip {
+        background: #f0f9ff;
+        border: 1px solid #bae6fd;
+        border-radius: 8px;
+        padding: 12px;
+        margin-top: 16px;
+        font-size: 12px;
+        color: #0369a1;
+        line-height: 1.4;
+      }
+
+      .tip strong {
+        color: #0c4a6e;
+      }
     </style>
   </head>
   <body>
@@ -349,13 +381,19 @@
         <div id="currentTitle" class="current-title-text">Loading...</div>
       </div>
 
+      <div class="quick-action">
+        <button id="iconOnlyBtn" class="btn btn-icon-only">
+          🎯 Icon Only Mode
+        </button>
+      </div>
+
       <div class="input-group">
-        <label for="newTitle">New Title</label>
+        <label for="newTitle">Custom Title</label>
         <input
           type="text"
           id="newTitle"
           class="title-input"
-          placeholder="Enter your custom title (or leave empty)..."
+          placeholder="Enter custom title (or leave empty for icon-only)..."
           maxlength="200"
         />
       </div>
@@ -366,6 +404,11 @@
       </div>
 
       <div id="status" class="status"></div>
+
+      <div class="tip">
+        <strong>Pro Tip:</strong> Use Chrome's tab groups with icon-only mode
+        for a clean, organized browser experience!
+      </div>
 
       <div id="savedTitles" class="saved-titles" style="display: none">
         <div class="saved-titles-header">Recent Titles</div>
